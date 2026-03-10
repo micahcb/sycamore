@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { LordIcon } from "@/components/lord-icon";
 import { TreeLottie } from "@/components/tree-lottie";
+import { useAuth } from "@/components/auth/backend-auth-provider";
 import { cn } from "@/lib/utils";
 
 // Lordicon CDN URLs (hover-triggered). Swap with any icon from https://lordicon.com → copy embed URL.
@@ -12,6 +13,7 @@ const LORDICON = {
   home: "https://cdn.lordicon.com/ewtxwele.json",
   accounts: "https://cdn.lordicon.com/bgfqzjey.json",
   transactions: "https://cdn.lordicon.com/hnzvpwtz.json",
+  logout: "https://cdn.lordicon.com/ggirnlzk.json",
 } as const;
 
 const navItems = [
@@ -22,7 +24,14 @@ const navItems = [
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { signOut } = useAuth();
   const [logoHovered, setLogoHovered] = useState(false);
+
+  const handleLogout = () => {
+    signOut();
+    router.push("/login");
+  };
 
   return (
     <div
@@ -125,8 +134,31 @@ export function AppSidebar() {
         <div
           data-slot="sidebar-footer"
           data-sidebar="footer"
-          className="flex flex-row items-center gap-2 p-2"
-        />
+          className="flex flex-col gap-1 border-t border-sidebar-border p-2"
+        >
+          <button
+            type="button"
+            id="sidebar-logout"
+            onClick={handleLogout}
+            className={cn(
+              "flex h-8 w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm text-sidebar-foreground outline-none ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2",
+              "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+              "active:bg-sidebar-accent active:text-sidebar-accent-foreground",
+              "[&>span:last-child]:truncate [&_lord-icon]:shrink-0"
+            )}
+            data-sidebar="menu-button"
+            aria-label="Log out"
+          >
+            <LordIcon
+              src={LORDICON.logout}
+              trigger="hover"
+              target="#sidebar-logout"
+              size={20}
+              className="text-sidebar-foreground"
+            />
+            <span className="flex items-center gap-2">Log out</span>
+          </button>
+        </div>
       </div>
     </div>
   );

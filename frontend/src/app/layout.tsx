@@ -4,6 +4,8 @@ import { Geist, Geist_Mono, Figtree } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { AppSidebar } from "@/components/app-sidebar";
+import { AuthGuard } from "@/components/auth/auth-guard";
+import { BackendAuthProvider } from "@/components/auth/backend-auth-provider";
 import { Navbar } from "@/components/Navbar";
 
 const figtree = Figtree({subsets:['latin'],variable:'--font-sans'});
@@ -40,11 +42,21 @@ export default function RootLayout({
           src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"
           strategy="beforeInteractive"
         />
-        <AppSidebar />
-        <div className="flex min-h-svh flex-col md:pl-(--sidebar-width)">
-          <Navbar />
-          {children}
-        </div>
+        <BackendAuthProvider>
+          <AuthGuard
+            shell={
+              <>
+                <AppSidebar />
+                <div className="flex min-h-svh flex-col md:pl-(--sidebar-width)">
+                  <Navbar />
+                  {children}
+                </div>
+              </>
+            }
+          >
+            {children}
+          </AuthGuard>
+        </BackendAuthProvider>
       </body>
     </html>
   );

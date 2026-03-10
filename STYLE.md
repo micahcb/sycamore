@@ -8,6 +8,7 @@ This document describes the visual and interaction design system used in the Cha
 
 - **Styling**: Tailwind CSS v4 with `@theme` and CSS variables
 - **Components**: shadcn/ui (Radix primitives, CVA for variants)
+- **Icons**: Lordicon (`@lordicon/react`), animated icon Player with JSON assets
 - **Fonts**: Geist Sans (primary), Geist Mono (monospace), loaded via Next.js `next/font/google`
 - **Animations**: `tw-animate-css` for motion
 - **Theme**: Dark mode by default (`className="dark"` on `<html>`)
@@ -75,7 +76,8 @@ Colors are defined as OKLCH CSS variables in `globals.css` and mapped into Tailw
 
 - Use `Button` from `@/components/ui/button` with CVA variants: `default`, `destructive`, `outline`, `secondary`, `ghost`, `link`.
 - Sizes: `default`, `xs`, `sm`, `lg`, `icon`, `icon-xs`, `icon-sm`, `icon-lg`.
-- Shared behavior: `transition-all`, focus-visible ring, disabled opacity 50%, `rounded-md`.
+- Shared behavior: `cursor-pointer`, `transition-all`, focus-visible ring, disabled opacity 50%, `rounded-md`.
+- Every button must show the hand (pointer) cursor on hover; the base `Button` component includes `cursor-pointer`.
 - Icon buttons: `variant="ghost" size="icon"` with `aria-label`; icon color e.g. `text-muted-foreground` when secondary.
 
 ### Inputs
@@ -88,6 +90,15 @@ Colors are defined as OKLCH CSS variables in `globals.css` and mapped into Tailw
 - Use `Card` and subcomponents from `@/components/ui/card`: `rounded-xl border py-6 shadow-sm`, `bg-card text-card-foreground`, `gap-6`.
 - **CardHeader**: grid with optional **CardAction**; **CardTitle** (leading-none, font-semibold), **CardDescription** (text-muted-foreground, text-sm).
 - **CardContent** / **CardFooter**: `px-6`; footer can have `border-t` and `pt-6`.
+
+### Icons
+
+- Use **Lordicon** for all icons. Install and use `@lordicon/react`.
+- Import the `Player` component and pass icon data (JSON from [Lordicon](https://lordicon.com) or local assets).
+- Example: `import { Player } from "@lordicon/react";` then `<Player ref={playerRef} icon={ICON} size={24} />`.
+- Use `size` for dimensions; use `colorize` or `colors` (e.g. `"primary:#fff"`) to match semantic tokens.
+- Trigger animations via ref: `playerRef.current?.playFromBeginning()` or `playerRef.current?.play()`.
+- Icon-only buttons: pair `Player` with `Button variant="ghost" size="icon"` and `aria-label`.
 
 ### Skeletons
 

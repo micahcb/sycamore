@@ -1,3 +1,5 @@
+import { getAuthToken } from "@/lib/auth-token";
+
 const raw = process.env.NEXT_PUBLIC_PLAID_API_URL ?? "http://localhost:3001";
 const API_BASE = (
   raw.startsWith("http://") || raw.startsWith("https://") ? raw : `https://${raw}`
@@ -10,9 +12,15 @@ async function request<T>(path: string, options?: RequestOptions): Promise<T> {
   const base = API_BASE.replace(/\/+$/, "");
   const pathStr = path.startsWith("/") ? path.slice(1) : path;
   const url = `${base}/${pathStr}`;
+  const token = getAuthToken();
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+    ...(init.headers as Record<string, string>),
+  };
+  if (token) headers["Authorization"] = `Bearer ${token}`;
   const res = await fetch(url, {
     ...init,
-    headers: { "Content-Type": "application/json", ...init.headers },
+    headers,
     ...(body !== undefined && { body: JSON.stringify(body) }),
   });
   const data = await res.json().catch(() => ({}));

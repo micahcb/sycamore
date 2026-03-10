@@ -15,6 +15,6 @@ When editing or adding UI, layout, or styles in this project, follow the convent
 - **Layout**: Root wrapper `min-h-screen bg-background font-sans`; main content `mx-auto max-w-5xl px-4 py-12`; card padding `py-6` / `px-6`.
 - **Theme**: Dark mode by default; globals and tokens live in `app/globals.css` with `@theme` and CSS variables.
 - **Accessibility**: `focus-visible:` for focus styles; `aria-label` on icon-only buttons; `aria-invalid` where appropriate.
-- **Icons**: Use Rive for all icons. Import and use the hook: `import { useRive } from "@rive-app/react-canvas";`.
+- **Icons**: Use Lordicon for all icons. Use `Player` from `@lordicon/react` with icon JSON; use `size`, `colorize`/`colors` for theming, and ref methods for animation.
 
 Refer to **STYLE.md** for full token tables, component variants, spacing, and product-specific patterns.

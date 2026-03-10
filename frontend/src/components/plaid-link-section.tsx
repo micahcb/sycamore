@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { usePlaidLink } from "react-plaid-link";
+import { useAuth } from "@/components/auth/backend-auth-provider";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -21,6 +22,7 @@ type Account = { account_id: string; name: string; type: string; subtype: string
 type Transaction = { name?: string; amount?: number; date?: string; pending?: boolean };
 
 export function PlaidLinkSection() {
+  const { user } = useAuth();
   const [linkToken, setLinkToken] = useState<string | null>(null);
   const [linked, setLinked] = useState(false);
   const [accounts, setAccounts] = useState<Account[]>([]);
@@ -31,12 +33,12 @@ export function PlaidLinkSection() {
   const fetchLinkToken = useCallback(async () => {
     setError(null);
     try {
-      const { link_token } = await createLinkToken();
+      const { link_token } = await createLinkToken(user?.id);
       setLinkToken(link_token);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to get link token");
     }
-  }, []);
+  }, [user?.id]);
 
   useEffect(() => {
     fetchLinkToken();
