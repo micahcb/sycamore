@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { createElement, useEffect } from "react";
 import { defineElement } from "@lordicon/element";
 import { cn } from "@/lib/utils";
 
@@ -34,15 +34,13 @@ export function LordIcon({
     ensureLordIconElement();
   }, []);
 
-  return (
-    <lord-icon
-      src={src}
-      trigger={trigger}
-      target={target}
-      colors={colors}
-      className={cn("shrink-0 current-color", className)}
-      style={{ width: size, height: size }}
-      aria-hidden
-    />
-  );
+  return createElement("lord-icon", {
+    src,
+    trigger,
+    target,
+    colors,
+    className: cn("shrink-0 current-color", className),
+    style: { width: size, height: size },
+    "aria-hidden": true,
+  });
 }

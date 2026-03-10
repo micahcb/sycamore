@@ -1,4 +1,8 @@
-const API_BASE = process.env.NEXT_PUBLIC_PLAID_API_URL ?? "http://localhost:3001";
+const raw = process.env.NEXT_PUBLIC_PLAID_API_URL ?? "http://localhost:3001";
+const API_BASE =
+  raw.startsWith("http://") || raw.startsWith("https://")
+    ? raw
+    : `https://${raw}`;
 
 async function request<T>(
   path: string,
