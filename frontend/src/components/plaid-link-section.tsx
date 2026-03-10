@@ -67,8 +67,8 @@ export function PlaidLinkSection() {
   const { open, ready } = usePlaidLink({
     token: linkToken,
     onSuccess,
-    onExit: (_, err) => {
-      if (err) setError(err?.error_message ?? "Link exited with error");
+    onExit: (error) => {
+      if (error) setError(error.error_message ?? "Link exited with error");
     },
   });
 
