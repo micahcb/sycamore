@@ -4,10 +4,9 @@ const API_BASE =
     ? raw
     : `https://${raw}`;
 
-async function request<T>(
-  path: string,
-  options?: RequestInit & { body?: object }
-): Promise<T> {
+type RequestOptions = Omit<RequestInit, "body"> & { body?: object };
+
+async function request<T>(path: string, options?: RequestOptions): Promise<T> {
   const { body, ...init } = options ?? {};
   const res = await fetch(`${API_BASE}${path}`, {
     ...init,
