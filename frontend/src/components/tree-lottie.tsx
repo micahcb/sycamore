@@ -34,11 +34,11 @@ export function TreeLottie({ className, playTrigger }: TreeLottieProps) {
     lottieRef.current?.goToAndStop(0, true);
   };
 
-  if (!animationData) return <div className={cn("h-6 w-6 shrink-0", className)} />;
+  if (!animationData) return <div className={cn("h-6 w-6 shrink-0 flex items-center justify-center", className)} />;
 
   return (
     <div
-      className={cn("h-6 w-6 shrink-0", className)}
+      className={cn("h-6 w-6 shrink-0 flex items-center justify-center", className)}
       style={{ filter: "brightness(0) invert(1)" }}
       aria-hidden
     >

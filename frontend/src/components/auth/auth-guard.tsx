@@ -4,9 +4,11 @@ import { useEffect, type ReactNode } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/components/auth/backend-auth-provider";
 
+const PUBLIC_PATHS = ["/", "/login"];
+
 type AuthGuardProps = {
   children: ReactNode;
-  /** When on /login we render only this (no sidebar/nav). Otherwise we render shell. */
+  /** When on /login or / (unauthenticated) we render only this (no sidebar/nav). Otherwise we render shell. */
   shell?: ReactNode;
 };
 
@@ -17,8 +19,9 @@ export function AuthGuard({ children, shell }: AuthGuardProps) {
 
   useEffect(() => {
     if (loading) return;
-    if (!user && pathname !== "/login") {
-      router.replace("/login");
+    const isPublic = PUBLIC_PATHS.includes(pathname);
+    if (!user && !isPublic) {
+      router.replace("/");
     }
   }, [loading, user, pathname, router]);
 
@@ -30,11 +33,15 @@ export function AuthGuard({ children, shell }: AuthGuardProps) {
     );
   }
 
-  if (!user && pathname !== "/login") {
+  if (!user && !PUBLIC_PATHS.includes(pathname)) {
     return null;
   }
 
   if (pathname === "/login") {
+    return <>{children}</>;
+  }
+
+  if (pathname === "/" && !user) {
     return <>{children}</>;
   }
 

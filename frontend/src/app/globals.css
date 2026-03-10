@@ -134,3 +134,16 @@
     @apply font-sans;
   }
 }
+
+@keyframes banks-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-banks-scroll {
+  animation: banks-scroll 60s linear infinite;
+}
