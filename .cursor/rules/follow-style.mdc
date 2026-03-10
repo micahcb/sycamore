@@ -1,0 +1,20 @@
+---
+description: Enforce project style from STYLE.md (Tailwind, shadcn, typography, layout)
+alwaysApply: true
+---
+
+# Follow STYLE.md
+
+When editing or adding UI, layout, or styles in this project, follow the conventions in **STYLE.md** at the project root.
+
+## Must follow
+
+- **Colors**: Use semantic tokens only (`text-foreground`, `bg-card`, `border-border`, `text-primary`, `text-muted-foreground`, etc.). No raw hex/OKLCH in components.
+- **Components**: Use shadcn/ui from `@/components/ui/*` (Button, Card, Input, Skeleton). Use `cn()` from `@/lib/utils` for class merging.
+- **Typography**: Geist Sans (`font-sans`), `antialiased` on body; headings use `font-semibold` or `font-medium` with `tracking-tight`.
+- **Layout**: Root wrapper `min-h-screen bg-background font-sans`; main content `mx-auto max-w-5xl px-4 py-12`; card padding `py-6` / `px-6`.
+- **Theme**: Dark mode by default; globals and tokens live in `app/globals.css` with `@theme` and CSS variables.
+- **Accessibility**: `focus-visible:` for focus styles; `aria-label` on icon-only buttons; `aria-invalid` where appropriate.
+- **Icons**: Use Rive for all icons. Import and use the hook: `import { useRive } from "@rive-app/react-canvas";`.
+
+Refer to **STYLE.md** for full token tables, component variants, spacing, and product-specific patterns.

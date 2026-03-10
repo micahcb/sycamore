@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plaid Link test</title>
+  <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+</head>
+<body>
+  <h1>Plaid Link test</h1>
+  <p><strong>Sandbox:</strong> Use username <code>user_good</code>, password <code>pass_good</code>. If it asks for a phone number, use <code>415-555-0010</code> (OTP: <code>123456</code>).</p>
+  <button id="link-btn">Open Plaid Link</button>
+  <pre id="out" style="margin-top:1rem; padding:1rem; background:#eee;"></pre>
+
+  <script>
+    const API = 'http://localhost:3000';
+    const out = document.getElementById('out');
+
+    document.getElementById('link-btn').onclick = async () => {
+      out.textContent = 'Fetching link token...';
+      const res = await fetch(API + '/api/link/token', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
+      const { link_token } = await res.json();
+      if (!link_token) {
+        out.textContent = 'Error: ' + JSON.stringify(await res.json());
+        return;
+      }
+
+      const handler = Plaid.create({
+        token: link_token,
+        onSuccess: (publicToken, data) => {
+          const token = publicToken || data?.public_token || data?.publicToken;
+          out.textContent = 'Public token (use this with POST /api/token/exchange):\n\n' + (token || JSON.stringify(data, null, 2));
+        },
+        onExit: (err) => {
+          if (err) out.textContent = 'Exit: ' + JSON.stringify(err, null, 2);
+        },
+      });
+      handler.open();
+    };
+  </script>
+</body>
+</html>

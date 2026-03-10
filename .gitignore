@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+# Environment
+.env
+.env.local
+.env.*.local
+# Build / cache
+dist/
+.next/
+build/
+*.tsbuildinfo
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
