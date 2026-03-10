@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   title: "Sycamore",
   description: "Sycamore is a personal finance management tool that helps you track your income and expenses.",
   icons: {
-    icon: "/sycamore.svg",
+    icon: "/favicon.svg",
   },
 };
 
