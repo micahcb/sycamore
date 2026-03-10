@@ -1,14 +1,16 @@
 const raw = process.env.NEXT_PUBLIC_PLAID_API_URL ?? "http://localhost:3001";
-const API_BASE =
-  raw.startsWith("http://") || raw.startsWith("https://")
-    ? raw
-    : `https://${raw}`;
+const API_BASE = (
+  raw.startsWith("http://") || raw.startsWith("https://") ? raw : `https://${raw}`
+).replace(/\/+$/, "");
 
 type RequestOptions = Omit<RequestInit, "body"> & { body?: object };
 
 async function request<T>(path: string, options?: RequestOptions): Promise<T> {
   const { body, ...init } = options ?? {};
-  const res = await fetch(`${API_BASE}${path}`, {
+  const base = API_BASE.replace(/\/+$/, "");
+  const pathStr = path.startsWith("/") ? path.slice(1) : path;
+  const url = `${base}/${pathStr}`;
+  const res = await fetch(url, {
     ...init,
     headers: { "Content-Type": "application/json", ...init.headers },
     ...(body !== undefined && { body: JSON.stringify(body) }),
