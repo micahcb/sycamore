@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LordIcon } from "@/components/lord-icon";
@@ -14,13 +15,14 @@ const LORDICON = {
 } as const;
 
 const navItems = [
-  { href: "/", label: "Home", icon: LORDICON.home },
-  { href: "/accounts", label: "Accounts", icon: LORDICON.accounts },
-  { href: "/transactions", label: "Transactions", icon: LORDICON.transactions },
+  { href: "/", label: "Home", icon: LORDICON.home, id: "nav-home" },
+  { href: "/accounts", label: "Accounts", icon: LORDICON.accounts, id: "nav-accounts" },
+  { href: "/transactions", label: "Transactions", icon: LORDICON.transactions, id: "nav-transactions" },
 ];
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const [logoHovered, setLogoHovered] = useState(false);
 
   return (
     <div
@@ -40,8 +42,10 @@ export function AppSidebar() {
             <Link
               href="/"
               className="flex items-center gap-2 truncate text-sidebar-foreground transition-colors hover:text-sidebar-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring"
+              onMouseEnter={() => setLogoHovered(true)}
+              onMouseLeave={() => setLogoHovered(false)}
             >
-              <TreeLottie className="h-6 w-6" aria-hidden />
+              <TreeLottie className="h-6 w-6" playTrigger={logoHovered} aria-hidden />
               <span className="font-semibold tracking-tight">Sycamore</span>
             </Link>
           </div>
@@ -73,7 +77,7 @@ export function AppSidebar() {
                 data-sidebar="menu"
                 className="flex w-full min-w-0 flex-col gap-1"
               >
-                {navItems.map(({ href, label, icon }) => {
+                {navItems.map(({ href, label, icon, id }) => {
                   const isActive =
                     href === "/"
                       ? pathname === "/"
@@ -87,6 +91,7 @@ export function AppSidebar() {
                     >
                       <Link
                         href={href}
+                        id={id}
                         className={cn(
                           "peer/menu-button flex h-8 w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm text-sidebar-foreground outline-none ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2",
                           "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
@@ -104,6 +109,7 @@ export function AppSidebar() {
                         <LordIcon
                           src={icon}
                           trigger="hover"
+                          target={`#${id}`}
                           size={20}
                           className="text-sidebar-foreground"
                         />

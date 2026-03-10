@@ -6,9 +6,11 @@ import { cn } from "@/lib/utils";
 
 type TreeLottieProps = {
   className?: string;
+  /** When true, play the animation from the start (e.g. when parent is hovered). */
+  playTrigger?: boolean;
 };
 
-export function TreeLottie({ className }: TreeLottieProps) {
+export function TreeLottie({ className, playTrigger }: TreeLottieProps) {
   const [animationData, setAnimationData] = useState<object | null>(null);
   const lottieRef = useRef<LottieRef["current"]>(null);
 
@@ -18,6 +20,15 @@ export function TreeLottie({ className }: TreeLottieProps) {
       .then(setAnimationData)
       .catch(() => setAnimationData(null));
   }, []);
+
+  const prevTrigger = useRef(false);
+  useEffect(() => {
+    if (playTrigger && !prevTrigger.current && lottieRef.current) {
+      lottieRef.current.goToAndStop(0, true);
+      lottieRef.current.play();
+    }
+    prevTrigger.current = !!playTrigger;
+  }, [playTrigger]);
 
   const handleComplete = () => {
     lottieRef.current?.goToAndStop(0, true);

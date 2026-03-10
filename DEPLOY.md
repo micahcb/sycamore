@@ -8,19 +8,24 @@ Easiest approach: use **Railway** or **Render**. Both give you a URL like `your-
 
 1. **Sign up**: [railway.app](https://railway.app) (GitHub login).
 
-2. **New project** → **Deploy from GitHub** → connect this repo.
+2. **Create the project and first service (backend)**  
+   - In the **dashboard**, click **New Project** (top right).  
+   - Choose **Deploy from GitHub** (or “GitHub repo”).  
+   - Search for this repo and select it → **Deploy Now** (or add variables then Deploy).  
+   - That creates a project and your **first service**. We’ll use it as the backend.
 
-3. **Add two services** from the same repo:
-   - **Backend**: Add service → same repo → set **Root Directory** to `.` (repo root).
-     - **Build**: leave empty or `npm install`
-     - **Start**: `npm start`
-     - **Variables**: `PLAID_CLIENT_ID`, `PLAID_SECRET`, `PLAID_ENV` (optional, default `sandbox`)
-   - **Frontend**: Add service → same repo → set **Root Directory** to `frontend`.
-     - **Build**: `npm install && npm run build`
-     - **Start**: `npm start`
-     - **Variables**: `NEXT_PUBLIC_PLAID_API_URL` = your backend’s Railway URL (e.g. `https://budgetapp-api-production-xxxx.up.railway.app`)
+3. **Configure the backend service**  
+   - Click the service that was just created (on the project canvas).  
+   - **Settings** (or the gear): set **Root Directory** to `.` (repo root), **Build** to `npm install`, **Start** to `npm start`.  
+   - **Variables**: add `PLAID_CLIENT_ID`, `PLAID_SECRET`, and optionally `PLAID_ENV`.  
+   - Under **Settings → Networking** (or **Domains**), click **Generate Domain** and copy the URL (e.g. `https://your-app.up.railway.app`).
 
-4. Deploy the **backend** first. In the backend service go to **Settings → Domains** and copy the URL (e.g. `https://budgetapp-api-production-xxxx.up.railway.app`). Add that as `NEXT_PUBLIC_PLAID_API_URL` in the **frontend** service’s variables, then deploy the frontend (or trigger a redeploy).
+4. **Add the second service (frontend)**  
+   - Back on the **project canvas** (the main project view with your backend service), click the **`+`** or **New** button (top right (or press **Cmd+K** / **Ctrl+K** and type “new service”). If the UI shows “Add a service” / “New” area).  
+   - Choose **GitHub repo** again and select the **same** repo.  
+   - For this new service: set **Root Directory** to `frontend`, **Build** to `npm install && npm run build`, **Start** to `npm start`.  
+   - **Variables**: add `NEXT_PUBLIC_PLAID_API_URL` = the backend URL from step 3 (e.g. `https://your-app.up.railway.app`).  
+   - **Settings → Networking**: under “Generate Service Domain,” leave the port as **8080** (Railway sets `PORT` and Next.js uses it). Click **Generate Domain** to get your frontend URL.
 
 5. **CORS**: Backend already uses `cors()` with no origin restriction, so the frontend URL is allowed.
 

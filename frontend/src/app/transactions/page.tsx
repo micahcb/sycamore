@@ -20,7 +20,7 @@ type Transaction = {
   pending?: boolean;
 };
 
-function formatDateRange(start: string, end: string) {
+function formatDateRange(start: string | Date, end: string | Date) {
   const a = new Date(start);
   const b = new Date(end);
   return { start: a.toISOString().slice(0, 10), end: b.toISOString().slice(0, 10) };
