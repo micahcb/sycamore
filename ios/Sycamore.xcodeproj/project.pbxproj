@@ -1,0 +1,400 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		S001 /* LinkKit in Frameworks */ = {isa = PBXBuildFile; productRef = S002 /* LinkKit */; };
+		S003 /* SycamoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = S004 /* SycamoreApp.swift */; };
+		S005 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = S006 /* ContentView.swift */; };
+		S007 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = S008 /* Config.swift */; };
+		S009 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = S010 /* User.swift */; };
+		S011 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = S012 /* Account.swift */; };
+		S013 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = S014 /* Transaction.swift */; };
+		S015 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = S016 /* KeychainHelper.swift */; };
+		S017 /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = S018 /* AuthStore.swift */; };
+		S019 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = S020 /* APIClient.swift */; };
+		S021 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = S022 /* LoginView.swift */; };
+		S023 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = S024 /* MainTabView.swift */; };
+		S025 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = S026 /* HomeView.swift */; };
+		S027 /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = S028 /* AccountsView.swift */; };
+		S029 /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = S030 /* TransactionsView.swift */; };
+		S031 /* PlaidLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = S032 /* PlaidLinkView.swift */; };
+		S033 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = S034 /* Format.swift */; };
+		S035 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = S036 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		S000 /* Sycamore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sycamore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		S004 /* SycamoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SycamoreApp.swift; sourceTree = "<group>"; };
+		S006 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		S008 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		S010 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		S012 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		S014 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		S016 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		S018 /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
+		S020 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		S022 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		S024 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		S026 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		S028 /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
+		S030 /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
+		S032 /* PlaidLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidLinkView.swift; sourceTree = "<group>"; };
+		S034 /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
+		S036 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		S037 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		S0F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				S001 /* LinkKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		S0G0 = {
+			isa = PBXGroup;
+			children = (
+				S0G1 /* Sycamore */,
+				S0G2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		S0G1 /* Sycamore */ = {
+			isa = PBXGroup;
+			children = (
+				S004 /* SycamoreApp.swift */,
+				S006 /* ContentView.swift */,
+				S0G3 /* Config */,
+				S0G4 /* Models */,
+				S0G5 /* Services */,
+				S0G6 /* Views */,
+				S0G7 /* Helpers */,
+				S036 /* Assets.xcassets */,
+				S037 /* Info.plist */,
+			);
+			path = Sycamore;
+			sourceTree = "<group>";
+		};
+		S0G2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				S000 /* Sycamore.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		S0G3 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				S008 /* Config.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		S0G4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				S010 /* User.swift */,
+				S012 /* Account.swift */,
+				S014 /* Transaction.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		S0G5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				S016 /* KeychainHelper.swift */,
+				S018 /* AuthStore.swift */,
+				S020 /* APIClient.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		S0G6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				S0G8 /* Login */,
+				S0G9 /* Main */,
+				S0GA /* Plaid */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		S0G7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				S034 /* Format.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		S0G8 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				S022 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		S0G9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				S024 /* MainTabView.swift */,
+				S026 /* HomeView.swift */,
+				S028 /* AccountsView.swift */,
+				S030 /* TransactionsView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		S0GA /* Plaid */ = {
+			isa = PBXGroup;
+			children = (
+				S032 /* PlaidLinkView.swift */,
+			);
+			path = Plaid;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		S0T1 /* Sycamore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = S0C2 /* Build configuration list for PBXNativeTarget "Sycamore" */;
+			buildPhases = (
+				S0S1 /* Sources */,
+				S0F1 /* Frameworks */,
+				S0R1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sycamore;
+			packageProductDependencies = (
+				S002 /* LinkKit */,
+			);
+			productName = Sycamore;
+			productReference = S000 /* Sycamore.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		S0P1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					S0T1 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = S0C1 /* Build configuration list for PBXProject "Sycamore" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = S0G0;
+			productRefGroup = S0G2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			packageReferences = (
+				S0PK1 /* XCRemoteSwiftPackageReference "plaid-link-ios-spm" */,
+			);
+			targets = (
+				S0T1 /* Sycamore */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		S0R1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				S035 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		S0S1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				S003 /* SycamoreApp.swift in Sources */,
+				S005 /* ContentView.swift in Sources */,
+				S007 /* Config.swift in Sources */,
+				S009 /* User.swift in Sources */,
+				S011 /* Account.swift in Sources */,
+				S013 /* Transaction.swift in Sources */,
+				S015 /* KeychainHelper.swift in Sources */,
+				S017 /* AuthStore.swift in Sources */,
+				S019 /* APIClient.swift in Sources */,
+				S021 /* LoginView.swift in Sources */,
+				S023 /* MainTabView.swift in Sources */,
+				S025 /* HomeView.swift in Sources */,
+				S027 /* AccountsView.swift in Sources */,
+				S029 /* TransactionsView.swift in Sources */,
+				S031 /* PlaidLinkView.swift in Sources */,
+				S033 /* Format.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		S0C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		S0C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		S0C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Sycamore/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.sycamore.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		S0C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Sycamore/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.sycamore.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		S0C1 /* Build configuration list for PBXProject "Sycamore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				S0C0 /* Debug */,
+				S0C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		S0C2 /* Build configuration list for PBXNativeTarget "Sycamore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				S0C4 /* Debug */,
+				S0C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		S0PK1 /* XCRemoteSwiftPackageReference "plaid-link-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/plaid/plaid-link-ios-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		S002 /* LinkKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = S0PK1 /* XCRemoteSwiftPackageReference "plaid-link-ios-spm" */;
+			productName = LinkKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = S0P1 /* Project object */;
+}

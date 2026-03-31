@@ -12,11 +12,20 @@ struct TransactionsView: View {
                     ProgressView("Loading transactions…")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else if transactions.isEmpty {
-                    ContentUnavailableView(
-                        "No transactions",
-                        systemImage: "list.bullet",
-                        description: Text("Link a bank from the Home tab to see transactions here.")
-                    )
+                    VStack(spacing: 12) {
+                        Image(systemName: "list.bullet")
+                            .font(.system(size: 48))
+                            .foregroundColor(.secondary)
+                        Text("No transactions")
+                            .font(.headline)
+                        Text("Link a bank from the Home tab to see transactions here.")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding()
                 } else {
                     List(transactions) { tx in
                         HStack {
@@ -48,8 +57,11 @@ struct TransactionsView: View {
             .onAppear {
                 Task { await loadTransactions() }
             }
-            .alert("Error", isPresented: .constant(errorMessage != nil)) {
-                Button("OK") { errorMessage = nil }
+            .alert("Error", isPresented: Binding(
+                get: { errorMessage != nil },
+                set: { if !$0 { errorMessage = nil } }
+            )) {
+                Button("OK", role: .cancel) { errorMessage = nil }
             } message: {
                 if let msg = errorMessage {
                     Text(msg)

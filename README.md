@@ -4,6 +4,9 @@
 
 Sycamore is a personal finance app that lets you connect your bank accounts (via Plaid), view linked accounts and transactions, and manage your budget. Sign in with your phone number (Twilio Verify), then link one or more accounts to track income and spending in one place.
 
+- **Web:** Next.js frontend in `frontend/`; backend in `src/`.
+- **iOS:** Native Swift/SwiftUI app in `ios/` — see [ios/README.md](ios/README.md) to open in Xcode and run.
+
 ---
 
 **By [Micah Blackburn](https://github.com/micahblackburn)** — *Builder of cool shit.*

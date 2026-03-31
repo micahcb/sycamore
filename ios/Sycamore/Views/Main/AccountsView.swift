@@ -12,11 +12,20 @@ struct AccountsView: View {
                     ProgressView("Loading accounts…")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else if accounts.isEmpty {
-                    ContentUnavailableView(
-                        "No accounts",
-                        systemImage: "creditcard",
-                        description: Text("Link a bank from the Home tab to see your accounts here.")
-                    )
+                    VStack(spacing: 12) {
+                        Image(systemName: "creditcard")
+                            .font(.system(size: 48))
+                            .foregroundColor(.secondary)
+                        Text("No accounts")
+                            .font(.headline)
+                        Text("Link a bank from the Home tab to see your accounts here.")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .padding()
                 } else {
                     List(accounts) { account in
                         VStack(alignment: .leading, spacing: 4) {
@@ -41,8 +50,11 @@ struct AccountsView: View {
             .onAppear {
                 Task { await loadAccounts() }
             }
-            .alert("Error", isPresented: .constant(errorMessage != nil)) {
-                Button("OK") { errorMessage = nil }
+            .alert("Error", isPresented: Binding(
+                get: { errorMessage != nil },
+                set: { if !$0 { errorMessage = nil } }
+            )) {
+                Button("OK", role: .cancel) { errorMessage = nil }
             } message: {
                 if let msg = errorMessage {
                     Text(msg)

@@ -70,7 +70,7 @@ final class APIClient {
     // MARK: - Public (no auth)
 
     func sendOtp(phone: String) async throws {
-        let _: EmptyJSON = try await request(path: "auth/send-otp", method: "POST", body: ["phone": phone])
+        let _: SendOtpResponse = try await request(path: "auth/send-otp", method: "POST", body: ["phone": phone])
     }
 
     func verifyOtp(phone: String, code: String) async throws -> VerifyResponse {
@@ -103,7 +103,9 @@ private struct ErrorBody: Decodable {
     let error: String
 }
 
-private struct EmptyJSON: Decodable {}
+private struct SendOtpResponse: Decodable {
+    let ok: Bool?
+}
 
 private struct AnyEncodable: Encodable {
     let value: Encodable
